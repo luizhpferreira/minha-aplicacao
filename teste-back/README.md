@@ -14,7 +14,7 @@ Clonar o Repositório
 bash
 Copiar código
 git clone https://github.com/luizhpferreira/minha-aplicacao.git
-cd seu-projeto
+cd minha-aplicacao
 Construir a Aplicação
 
 Use Maven para construir o projeto:
