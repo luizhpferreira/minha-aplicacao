@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    image: minha-aplicacao:latest
+    build:
+      context: ./target/teste-back-0.0.1-SNAPSHOT.jar
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/teste-back
+      SPRING_DATASOURCE_USERNAME: teste
+      SPRING_DATASOURCE_PASSWORD: teste123
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: teste123
+      MYSQL_DATABASE: teste-back
+      MYSQL_USER: teste
+      MYSQL_PASSWORD: teste123

@@ -1,0 +1,37 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+      - name: Build Docker image
+        run: docker build -t minha-aplicacao:latest .
+
+      - name: Test Docker container
+        run: docker run -d -p 8080:8080 minha-aplicacao:latest
+
+      - name: Verify page is accessible
+        run: |
+          sleep 30 # Espera 30 segundos para a aplicação iniciar
+          curl -v http://localhost:8080 | grep "<title>"
