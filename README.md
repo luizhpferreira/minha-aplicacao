@@ -57,3 +57,4 @@ Copiar código
                         └── SeuProjetoApplication.java  # Classe principal da aplicação Spring Boot
 Contribuindo
 Sinta-se à vontade para contribuir com melhorias, correções de bugs ou novas funcionalidades. Abra uma issue para discussões maiores e faça um pull request com suas alterações.
+s
